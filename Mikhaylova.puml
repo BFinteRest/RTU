@@ -1,0 +1,27 @@
+@startuml
+left to right direction
+actor ITdepartment as IT
+actor User as U
+actor CyberSecurity as CS
+actor Analytics as A
+actor TecnicalGroup as TG
+
+rectangle "MainSystem" {
+usecase MAINCOMPUTER as MC
+usecase Computer as C
+usecase Server as S
+usecase Site 
+usecase ClientBase as CB
+MC --> S :"Отправляет отчет"
+A <--S  :"Данные отправляются на анализ"
+C --> MC :"Отправляет результат теста"
+U -->Site :"Отправляет запрос на тест"
+Site ---> TG :"Направление запроса"
+A-->CB :"Выгружает анализ отчета"
+TG---> C :"Загружает программу на тест"
+IT-->MC :"Мониторинг и обслуживание"
+CS-->C :"Проводит диагностику"
+CB-->Site :"Выгрузка данных в ЛК клиента"
+Site --> U :"Получение результата"
+}
+@enduml
